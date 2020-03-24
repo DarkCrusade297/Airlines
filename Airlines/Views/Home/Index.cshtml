@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Авиабилеты";
+}
+<div>
+<h3>
+   Пассажиры
+</h3>
+    <table>
+        <tr>
+            <td><p>Имя</p></td>
+            <td><p>Фамилия</p></td>
+            <td><p>Отчество</p></td>
+        </tr>
+        @foreach (var b in ViewBag.Customers)
+        {
+        <tr>
+            <td><p>@b.Name</p></td>
+            <td><p>@b.Surname</p></td>
+            <td><p>@b.Patronymic</p></td>
+        </tr>
+        }
+    </table>
+</div>
+
+
