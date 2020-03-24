@@ -6,13 +6,15 @@ using System.Data.Entity;
 
 namespace Airlines.Models
 {
-    public class AirlinesContext: DbContext
-    {
+    public class AirlinesContext: DbContext { 
+         public AirlinesContext() : base("DefaultConnection")
+    { }
+
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Class1> Class1s { get; set; }
 
-        public AirlinesContext() : base("AirlinesContext") { }
+
 
     }
     public class AirlinesDbInitializer: DropCreateDatabaseAlways<AirlinesContext>

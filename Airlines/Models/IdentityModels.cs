@@ -21,7 +21,7 @@ namespace Airlines.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("AIRLINES_f4e236bdabcb4a798fe5561a3cf71f9d", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
