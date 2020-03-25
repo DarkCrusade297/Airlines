@@ -7,5 +7,6 @@ namespace Airlines.Models
 {
     public class Flight
     {
+        public int id;
     }
 }
