@@ -14,7 +14,6 @@ namespace Airlines.Models
         public DateTime BirthDate { get; set; } = DateTime.Now;
         public string PassportNumber { get; set; }
         public DateTime PassportDate { get; set; } = DateTime.Now;
-        public string WasGiven { get; set; }
         public string PhoneNumber { get; set; }
     }
 }

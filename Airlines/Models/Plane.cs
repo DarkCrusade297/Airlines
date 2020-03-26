@@ -7,8 +7,9 @@ namespace Airlines.Models
 {
     public class Plane
     {
-        public int PlaneID { get; set; }
-        public string PlaneModel { get; set; }
+        public int ID { get; set; }
+        public string Firm { get; set; }
+        public string Model { get; set; }
         public int EconomSeats { get; set; }
         public int BuisnessSeats { get; set; }
     }
