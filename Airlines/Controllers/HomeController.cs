@@ -35,7 +35,7 @@ namespace Airlines.Controllers
         }
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Информация для связи:";
 
             return View();
         }
