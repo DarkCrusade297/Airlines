@@ -1,7 +1,12 @@
 ﻿body {
     padding-bottom: 20px;
 }
-
+html, body {
+    height:100%;
+}
+.wrapper {
+    min-height: 100%;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -20,4 +25,11 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+footer{
+    text-align:center;
+}
+.clear {
+    clear: both;
 }
