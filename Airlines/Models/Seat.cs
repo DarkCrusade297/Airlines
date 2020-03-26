@@ -5,11 +5,10 @@ using System.Web;
 
 namespace Airlines.Models
 {
-    public class Planes
+    public class Seat
     {
+        public int SeatID { get; set; }
         public int PlaneID { get; set; }
-        public string PlaneModel { get; set; }
-        public int EconomSeats { get; set; }
-        public int BuisnessSeats { get; set; }
+        public string SeatName { get; set; }
     }
 }

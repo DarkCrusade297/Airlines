@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Airlines.Models
 {
-    public class Flights
+    public class Flight
     {
         public int FlightID { get; set; }
         public int AirlineID { get; set; }
