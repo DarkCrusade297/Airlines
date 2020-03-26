@@ -21,7 +21,11 @@ namespace Airlines.Controllers
         {
             return View();
         }
-
+        public ActionResult View2()
+        {
+            return View();
+        }
+        [Authorize(Roles ="admin")]
         public ActionResult Go (int id)
         {
             ViewBag.CustomerId = id;
