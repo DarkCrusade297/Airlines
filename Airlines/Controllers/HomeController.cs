@@ -25,7 +25,7 @@ namespace Airlines.Controllers
         {
             return View();
         }
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles ="user")]
         public ActionResult Go (int id)
         {
             ViewBag.CustomerId = id;
