@@ -175,6 +175,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AirlinesContext.cs" />
+    <Compile Include="Models\DbInitializer.cs" />
     <Compile Include="Models\Plane.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Flight.cs" />
@@ -245,7 +246,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Go.cshtml" />
-    <Content Include="Views\Home\View.cshtml" />
+    <Content Include="Views\Home\View2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
