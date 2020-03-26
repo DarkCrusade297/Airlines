@@ -23,6 +23,10 @@ namespace Airlines.Controllers
 
             return View();
         }
+        public ActionResult View2()
+        {
+            return View();
+        }
 
         public ActionResult Go (int id)
         {
