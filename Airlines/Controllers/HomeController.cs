@@ -24,6 +24,11 @@ namespace Airlines.Controllers
             return View();
         }
 
+        public ActionResult Go (int id)
+        {
+            ViewBag.CustomerId = id;
+            return View();
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
