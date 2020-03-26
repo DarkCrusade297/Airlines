@@ -12,7 +12,9 @@ namespace Airlines.Models
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
-        public DbSet<Plane> Class1s { get; set; }
+        public DbSet<Plane> Planes { get; set; }
+        public DbSet<Flight> Flights { get; set; }
+        public DbSet<Seat> Seats { get; set; }
 
 
 
