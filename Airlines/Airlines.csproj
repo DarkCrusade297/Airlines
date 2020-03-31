@@ -199,6 +199,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Ресурсики\logo.png" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -250,6 +252,7 @@
     <Content Include="Views\Home\Go.cshtml" />
     <Content Include="Views\Home\View2.cshtml" />
     <Content Include="Views\Book\Search.cshtml" />
+    <Content Include="Views\Book\FlightsSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
