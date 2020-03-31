@@ -17,7 +17,6 @@ namespace Airlines.Models
         public DbSet<Seat> Seats { get; set; }
 
 
-
     }
     public class AirlinesDbInitializer: DropCreateDatabaseAlways<AirlinesContext>
     {
