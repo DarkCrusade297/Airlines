@@ -62,8 +62,8 @@
 <div>
     
     <form action="/Book/FlightsSearch" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" id="form0" method="post">
-        <input type="text" name="from" />
-        <input type="submit" value="Поиск" />
+        <input required type="text" name="from" />
+        <button type="submit" class="btn btn-primary">Поиск</button>
     </form>
     <div id="results"></div>
 </div>
