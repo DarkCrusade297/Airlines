@@ -1,11 +1,11 @@
-﻿@model IEnumerable<Airlines.Models.Flight>
+﻿@model Airlines.Models.SearchModel
 
 <div id="results">
-    <h3>Все рейсы: @Model.First().ArrivalPlace</h3>
+    <h3>Все рейсы: @Model.from.Name</h3>
     <ul>
-        @foreach (var item in Model)
+        @foreach (var item in Model.flightsTo)
         {
-            <li>@item.ArrivalPlace</li>
+        <div> @Model.from.Name @item.Arrival.ToString("dd.MM.yyyy") @item.Arrival.ToString("HH:mm") , @Model.to.Name</div>
             <li>@item.Airline</li>
         }
     </ul>

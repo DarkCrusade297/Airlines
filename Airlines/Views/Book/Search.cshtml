@@ -1,68 +1,25 @@
-﻿@*@model Airlines.Models.FlightsModel
-    @{
-        ViewBag.Title = "Поиск билетов";
-    }
-
-    <h2>Поиск авиабилетов </h2>
-    <hr>
-    <h3>Заполните форму ниже, чтобы найти билеты:</h3>
-    <form method="get">
-        <div class="form-row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="from">Откуда</label>
-                    <input type="text" class="form-control" id="from" placeholder="Введите город вылета">
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="to">Куда</label>
-                    <input type="text" class="form-control" id="to" placeholder="Введите город прибытия" autocomplete="off">
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Поиск</button>
-        </div>
-    </form>
-
-    <table>
-        <tr>
-            <th>Куда</th>
-            <th>Откуда</th>
-            <th>Дата отъезда</th>
-            <th>Дата прибытия</th>
-            <th>Время отлета</th>
-            <th>Время прилета</th>
-        </tr>
-
-        @foreach (var f in Model.Flights)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => f.DeparturePlace)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => f.ArrivalPlace)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => f.Departure)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => f.Arrival)
-            </td>
-            <td></td>
-            <td></td>
-        </tr>
-
-        }
-    </table>*@
+﻿
 @{
     ViewBag.Title = "Search";
 }
 
 <div>
-    
+
     <form action="/Book/FlightsSearch" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" id="form0" method="post">
-        <input required type="text" name="from" />
+        @*<input required type="text" name="from" />*@
+        <label class="control-label">Откуда: </label>
+        @Html.DropDownList("from", ViewBag.Cities as SelectList, "--Выберите город--",
+                    htmlAttributes: new { @class = "form-control"})
+
+        <label class="control-label">Куда: </label>
+        @Html.DropDownList("to", ViewBag.Cities as SelectList, "--Выберите город--",
+                htmlAttributes: new { @class = "form-control" })
+        <label for="date">Дата отправления: </label>
+        <input type="date" class="form-control" id="dateTo" name="dateTo" />
+        <label for="date">Дата возвращения </label>
+        <input type="date" class="form-control" id="dateFrom" name="dateFrom" />
+        <label for="oneway">Билет в одну сторону </label>
+        @Html.CheckBox("oneway", false)
         <button type="submit" class="btn btn-primary">Поиск</button>
     </form>
     <div id="results"></div>

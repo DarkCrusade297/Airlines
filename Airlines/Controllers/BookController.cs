@@ -18,25 +18,35 @@ namespace Airlines.Controllers
 
         }
         [HttpPost]
-        public ActionResult FlightsSearch(string from)
+        public ActionResult FlightsSearch(int from, int to, DateTime dateTo, DateTime? dateFrom, bool oneway)
         {
-            var allflights = db.Flights.Where(a => a.ArrivalPlace.Contains(from)).ToList();
-            if (allflights.Count <= 0)
+            var CityFrom = db.Cities.Find(from);
+            var CityTo = db.Cities.Find(to);
+            IEnumerable<Flight> flightsFrom;
+            SearchModel sm;
+            DateTime endTime = dateTo.AddDays(1);
+            var flightsTo = db.Flights.Where(a => a.ArrivalID == from && a.DepartureID == to && a.Arrival >= dateTo && a.Arrival < endTime).ToList();
+            if (flightsTo.Count <= 0)
             {
                 return HttpNotFound();
             }
-            return PartialView(allflights);
-        }
-        public ActionResult Search (string from, string to)
-        {
-            IQueryable<Flight> flights = from f in db.Flights select f;
-
-            if (!String.IsNullOrEmpty(from))
+            if (!oneway)
             {
-               flights = flights.Where(f => f.ArrivalPlace == from);
+                flightsFrom = db.Flights.Where(a => a.ArrivalID == to && a.DepartureID == from && a.Arrival == dateFrom).ToList();
+                if (flightsTo.Count <= 0)
+                {
+                    return HttpNotFound();
+                }
+                sm = new SearchModel { flightsTo = flightsTo, flightsFrom = flightsFrom, from = CityFrom, to = CityTo };
             }
-            FlightsModel fm = new FlightsModel { Flights = flights.ToList() };
-            return View(fm);
+            else
+            sm = new SearchModel { flightsTo = flightsTo, from = CityFrom, to = CityTo };
+            return PartialView(sm);
+        }
+        public ActionResult Search ()
+        {
+            ViewBag.Cities = new SelectList(db.Cities, "ID", "Name");
+            return View();
         }
 
         // GET: Book/Details/5

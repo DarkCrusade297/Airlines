@@ -174,15 +174,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003311021513_InitialCreate.cs" />
+    <Compile Include="Migrations\202003311021513_InitialCreate.Designer.cs">
+      <DependentUpon>202003311021513_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004010905145_MigrationDB.cs" />
+    <Compile Include="Migrations\202004010905145_MigrationDB.Designer.cs">
+      <DependentUpon>202004010905145_MigrationDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AirlinesContext.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\DbInitializer.cs" />
-    <Compile Include="Models\FlightsModel.cs" />
     <Compile Include="Models\Plane.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -270,6 +280,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003311021513_InitialCreate.resx">
+      <DependentUpon>202003311021513_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004010905145_MigrationDB.resx">
+      <DependentUpon>202004010905145_MigrationDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
