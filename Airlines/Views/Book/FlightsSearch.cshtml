@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Airlines.Models.Flight>
+
+<div id="results">
+    <h3>Все рейсы: @Model.First().ArrivalPlace</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.ArrivalPlace</li>
+            <li>@item.Airline</li>
+        }
+    </ul>
+</div>

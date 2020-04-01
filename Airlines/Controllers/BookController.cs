@@ -17,22 +17,25 @@ namespace Airlines.Controllers
             return View();
 
         }
+        [HttpPost]
+        public ActionResult FlightsSearch(string from)
+        {
+            var allflights = db.Flights.Where(a => a.ArrivalPlace.Contains(from)).ToList();
+            if (allflights.Count <= 0)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(allflights);
+        }
         public ActionResult Search (string from, string to)
         {
-            IQueryable<Flight> flights = db.Flights;
-            if (from!=null)
-            {
-                flights = flights.Where(f => f.DeparturePlace == to);
-            }
-            if (!String.IsNullOrEmpty(to))
-            {
-                flights = flights.Where(f => f.ArrivalPlace == from);
-            }
-            FlightsModel fm = new FlightsModel
-            {
-                Flights = flights.ToList()
-            };
+            IQueryable<Flight> flights = from f in db.Flights select f;
 
+            if (!String.IsNullOrEmpty(from))
+            {
+               flights = flights.Where(f => f.ArrivalPlace == from);
+            }
+            FlightsModel fm = new FlightsModel { Flights = flights.ToList() };
             return View(fm);
         }
 

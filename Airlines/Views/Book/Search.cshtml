@@ -1,61 +1,74 @@
-﻿
-@model Airlines.Models.FlightsModel
+﻿@*@model Airlines.Models.FlightsModel
+    @{
+        ViewBag.Title = "Поиск билетов";
+    }
+
+    <h2>Поиск авиабилетов </h2>
+    <hr>
+    <h3>Заполните форму ниже, чтобы найти билеты:</h3>
+    <form method="get">
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="from">Откуда</label>
+                    <input type="text" class="form-control" id="from" placeholder="Введите город вылета">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="to">Куда</label>
+                    <input type="text" class="form-control" id="to" placeholder="Введите город прибытия" autocomplete="off">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Поиск</button>
+        </div>
+    </form>
+
+    <table>
+        <tr>
+            <th>Куда</th>
+            <th>Откуда</th>
+            <th>Дата отъезда</th>
+            <th>Дата прибытия</th>
+            <th>Время отлета</th>
+            <th>Время прилета</th>
+        </tr>
+
+        @foreach (var f in Model.Flights)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => f.DeparturePlace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => f.ArrivalPlace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => f.Departure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => f.Arrival)
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        }
+    </table>*@
 @{
-    ViewBag.Title = "Поиск билетов";
+    ViewBag.Title = "Search";
 }
 
-<h2>Поиск авиабилетов </h2>
-<hr>
-<h3>Заполните форму ниже, чтобы найти билеты:</h3>
-<form method="get">
-    <div class="form-row">
-        <div class="col">
-            <div class="form-group">
-                <label for="from">Откуда</label>
-                <input type="text" class="form-control" id="from" aria-describedby="emailHelp" placeholder="Введите город вылета">
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                <label for="to">Куда</label>
-                <input type="text" class="form-control" id="to" placeholder="Введите город прибытия" autocomplete="off">
-            </div>
-        </div>
+<div>
+    
+    <form action="/Book/FlightsSearch" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" id="form0" method="post">
+        <input required type="text" name="from" />
         <button type="submit" class="btn btn-primary">Поиск</button>
-    </div>
-</form>
-
-<table>
-    <tr>
-        <th>Куда</th>
-        <th>Откуда</th>
-        <th>Дата отъезда</th>
-        <th>Дата прибытия</th>
-        <th>Время отлета</th>
-        <th>Время прилета</th>
-    </tr>
-
-    @foreach (var f in Model.Flights)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => f.DeparturePlace)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => f.ArrivalPlace)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => f.Departure)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => f.Arrival)
-        </td>
-        <td></td>
-        <td></td>
-    </tr>
-
-    }
-</table>
+    </form>
+    <div id="results"></div>
+</div>
+@Scripts.Render("~/scripts/jquery-3.3.1.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
 
 
 
