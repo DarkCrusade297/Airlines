@@ -60,13 +60,16 @@ footer{
 
 .mainZone {
     height: 100%;
-    background-color: #1e3c53;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+    /*background-color: #1e3c53;*/
+    /*border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;*/
 }
 
 .flight {
     height: 200px;
+    background-color: #1e3c53;
+    border-radius: 5px;
+
 }
 
 .info {

@@ -14,20 +14,25 @@
         @Html.DropDownList("to", ViewBag.Cities as SelectList, "--Выберите город--",
                 htmlAttributes: new { @class = "form-control" })
         <label for="date">Дата отправления: </label>
-        <input type="date" class="form-control" id="dateTo" name="dateTo" />
+        <input type="date" class="form-control" id="dateTo" name="dateTo" required />
         <label for="date">Дата возвращения </label>
-        <input type="date" class="form-control" id="dateFrom" name="dateFrom" />
+        <input type="date" class="form-control" id="dateFrom" name="dateFrom" required />
         <label for="oneway">Билет в одну сторону </label>
         @Html.CheckBox("oneway", false)
+        <label for="transfer">Возможность одной пересадки </label>
+        @Html.CheckBox("transfer", false)
         <button type="submit" class="btn btn-primary">Поиск</button>
     </form>
     <script>
         
         document.getElementById('oneway').onclick = function () {
-            if (document.getElementById('oneway').checked)
-                $("#dateFrom").prop("disabled", true); 
+            if (document.getElementById('oneway').checked) {
+                $("#dateFrom").prop("disabled", true);
+                $("#dateFrom").prop('required', false);
+            }
             else {
                 $("#dateFrom").prop("disabled", false); 
+                $("#dateFrom").prop('required', true); 
             }
         }
     </script>
