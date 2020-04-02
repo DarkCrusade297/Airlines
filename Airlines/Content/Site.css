@@ -48,25 +48,21 @@ footer{
 }
 
 .btnZone {
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1e3c53;
-    border-left: 2px solid azure;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
+    background-color: green;
 }
 
 .mainZone {
-    height: 100%;
+    height: 180px;
     background-color: #1e3c53;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+    border-right: 2px solid azure;
 }
 
 .flight {
-    height: 200px;
+    background-color: #1e3c53;
+    border-radius: 5px;
 }
 
 .info {
@@ -117,4 +113,8 @@ footer{
 
 .arrivalPlane {
     margin-left: 3%;
+}
+
+.tickets {
+    height: 100%;
 }
