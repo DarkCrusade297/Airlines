@@ -40,7 +40,7 @@ namespace Airlines.Controllers
                 sm = new SearchModel { flightsTo = flightsTo, flightsFrom = flightsFrom, from = CityFrom, to = CityTo };
             }
             else
-            sm = new SearchModel { flightsTo = flightsTo, from = CityFrom, to = CityTo };
+            sm = new SearchModel { flightsTo = flightsTo, flightsFrom = Enumerable.Empty<Flight>(), from = CityFrom, to = CityTo };
             return PartialView(sm);
         }
         public ActionResult Search ()
