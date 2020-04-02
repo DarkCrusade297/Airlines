@@ -3,20 +3,10 @@ namespace Airlines.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class MigrateDB : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.Cities",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Airport = c.String(),
-                    })
-                .PrimaryKey(t => t.ID);
-            
             CreateTable(
                 "dbo.Customers",
                 c => new
@@ -39,20 +29,14 @@ namespace Airlines.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         Airline = c.String(),
                         PlaneID = c.Int(),
-                        ArrivalID = c.Int(),
-                        DepartureID = c.Int(),
+                        ArrivalPlace = c.String(),
+                        DeparturePlace = c.String(),
                         Arrival = c.DateTime(nullable: false),
                         Departure = c.DateTime(nullable: false),
-                        ArrivalPlace_ID = c.Int(),
-                        DeparturePlace_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Cities", t => t.ArrivalPlace_ID)
-                .ForeignKey("dbo.Cities", t => t.DeparturePlace_ID)
                 .ForeignKey("dbo.Planes", t => t.PlaneID)
-                .Index(t => t.PlaneID)
-                .Index(t => t.ArrivalPlace_ID)
-                .Index(t => t.DeparturePlace_ID);
+                .Index(t => t.PlaneID);
             
             CreateTable(
                 "dbo.Planes",
@@ -110,21 +94,16 @@ namespace Airlines.Migrations
             DropForeignKey("dbo.Tickets", "CustomerID", "dbo.Customers");
             DropForeignKey("dbo.Seats", "PlaneID", "dbo.Planes");
             DropForeignKey("dbo.Flights", "PlaneID", "dbo.Planes");
-            DropForeignKey("dbo.Flights", "DeparturePlace_ID", "dbo.Cities");
-            DropForeignKey("dbo.Flights", "ArrivalPlace_ID", "dbo.Cities");
             DropIndex("dbo.Tickets", new[] { "SeatID" });
             DropIndex("dbo.Tickets", new[] { "FlightID" });
             DropIndex("dbo.Tickets", new[] { "CustomerID" });
             DropIndex("dbo.Seats", new[] { "PlaneID" });
-            DropIndex("dbo.Flights", new[] { "DeparturePlace_ID" });
-            DropIndex("dbo.Flights", new[] { "ArrivalPlace_ID" });
             DropIndex("dbo.Flights", new[] { "PlaneID" });
             DropTable("dbo.Tickets");
             DropTable("dbo.Seats");
             DropTable("dbo.Planes");
             DropTable("dbo.Flights");
             DropTable("dbo.Customers");
-            DropTable("dbo.Cities");
         }
     }
 }

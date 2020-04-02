@@ -10,6 +10,7 @@ namespace Airlines.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "Airlines.Models.AirlinesContext";
         }
 
         protected override void Seed(Airlines.Models.AirlinesContext context)
