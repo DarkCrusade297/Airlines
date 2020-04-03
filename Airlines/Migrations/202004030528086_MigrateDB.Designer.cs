@@ -13,7 +13,7 @@ namespace Airlines.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202004020357337_MigrateDB"; }
+            get { return "202004030528086_MigrateDB"; }
         }
         
         string IMigrationMetadata.Source

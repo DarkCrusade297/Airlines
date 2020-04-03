@@ -48,11 +48,11 @@ footer{
 }
 
 .btnZone {
-    height:180%;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: green;
+    background-color: #1e3c53;
 }
 
 .mainZone {
