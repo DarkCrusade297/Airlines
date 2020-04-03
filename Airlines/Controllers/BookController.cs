@@ -18,30 +18,44 @@ namespace Airlines.Controllers
 
         }
         [HttpPost]
-        public ActionResult FlightsSearch(int from, int to, DateTime dateTo, DateTime? dateFrom, bool oneway)
+        public ActionResult FlightsSearch(int from, int to, DateTime dateTo, DateTime? dateFrom, bool oneway, bool transfer)
         {
             var CityFrom = db.Cities.Find(from);
             var CityTo = db.Cities.Find(to);
             IEnumerable<Flight> flightsFrom;
             SearchModel sm;
             DateTime endTime = dateTo.AddDays(1);
+
+            if (transfer)
+            {
+                var flightsBetween = db.Flights.Where(f => f.Arrival == dateTo && f.ArrivalID == from);
+            }
+
+
             var flightsTo = db.Flights.Where(a => a.ArrivalID == from && a.DepartureID == to && a.Arrival >= dateTo && a.Arrival < endTime).ToList();
             if (flightsTo.Count <= 0)
             {
-                return HttpNotFound();
+                return PartialView("NotFound");
             }
             if (!oneway)
             {
                 flightsFrom = db.Flights.Where(a => a.ArrivalID == to && a.DepartureID == from && a.Arrival == dateFrom).ToList();
                 if (flightsTo.Count <= 0)
                 {
-                    return HttpNotFound();
+                    return PartialView("NotFound");
                 }
                 sm = new SearchModel { flightsTo = flightsTo, flightsFrom = flightsFrom, from = CityFrom, to = CityTo };
             }
             else
             sm = new SearchModel { flightsTo = flightsTo, flightsFrom = Enumerable.Empty<Flight>(), from = CityFrom, to = CityTo };
             return PartialView(sm);
+        }
+        public void getFlights (int from, int to, DateTime dateTo)
+        {
+            DateTime endTime = dateTo.AddDays(1);
+            var firstFlight = db.Flights.Where(f => f.ArrivalID == from && f.Arrival >= dateTo && f.Arrival < endTime && f.DepartureID != to);
+            IEnumerable<Flight> secondFlight;
+            
         }
         public ActionResult Search ()
         {
