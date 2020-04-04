@@ -12,7 +12,7 @@ namespace Airlines.Controllers
         // GET: Book
         AirlinesContext db = new AirlinesContext();
 
-        public ActionResult Index(int? team, string position)
+        public ActionResult Index()
         {
             return View();
 
@@ -25,21 +25,20 @@ namespace Airlines.Controllers
             IEnumerable<Flight> flightsFrom;
             SearchModel sm;
             DateTime endTime = dateTo.AddDays(1);
-
+            var flightsTo = db.Flights.Where(a => a.ArrivalPlaceID == from && a.DeparturePlaceID == to && a.Arrival >= dateTo && a.Arrival < endTime).ToList();
+            if (flightsTo.Count <= 0)
+             {
+                 return PartialView("NotFound");
+             }
             if (transfer)
             {
-                var flightsBetween = db.Flights.Where(f => f.Arrival == dateTo && f.ArrivalID == from);
-            }
+                var trFlights = getFlights(from, to, dateTo);
 
-
-            var flightsTo = db.Flights.Where(a => a.ArrivalID == from && a.DepartureID == to && a.Arrival >= dateTo && a.Arrival < endTime).ToList();
-            if (flightsTo.Count <= 0)
-            {
-                return PartialView("NotFound");
             }
+            
             if (!oneway)
             {
-                flightsFrom = db.Flights.Where(a => a.ArrivalID == to && a.DepartureID == from && a.Arrival == dateFrom).ToList();
+                flightsFrom = db.Flights.Where(a => a.ArrivalPlaceID == to && a.DeparturePlaceID == from && a.Arrival == dateFrom).ToList();
                 if (flightsTo.Count <= 0)
                 {
                     return PartialView("NotFound");
@@ -50,12 +49,27 @@ namespace Airlines.Controllers
             sm = new SearchModel { flightsTo = flightsTo, flightsFrom = Enumerable.Empty<Flight>(), from = CityFrom, to = CityTo };
             return PartialView(sm);
         }
-        public void getFlights (int from, int to, DateTime dateTo)
+        public IEnumerable<TransferFlight> getFlights (int from, int to, DateTime dateTo)
         {
+            List<TransferFlight> transferFlights = new List<TransferFlight>();
             DateTime endTime = dateTo.AddDays(1);
-            var firstFlight = db.Flights.Where(f => f.ArrivalID == from && f.Arrival >= dateTo && f.Arrival < endTime && f.DepartureID != to);
-            IEnumerable<Flight> secondFlight;
-            
+            var firstFlight = db.Flights.Where(f => f.ArrivalPlaceID == from && f.Arrival >= dateTo && f.Arrival < endTime && f.DeparturePlaceID != to).ToList();
+            foreach (var item in firstFlight)
+            {
+                var endTime2 = item.Departure.AddHours(3);
+                var endTime3 = item.Departure.AddHours(6);
+                var secondFlight = db.Flights.Where(f => f.ArrivalPlaceID == item.DeparturePlaceID && f.Arrival >= endTime2 && f.Arrival <= endTime3 && f.DeparturePlaceID == to).ToList();
+                foreach (var f in secondFlight)
+                {
+                    transferFlights.Add(new TransferFlight(item, f));
+                }
+            }
+            foreach (var item in transferFlights)
+            {
+                item.FirstFlight.DeparturePlace = db.Cities.Find(item.FirstFlight.DeparturePlaceID);
+                item.FirstFlight.ArrivalPlace = db.Cities.Find(item.FirstFlight.ArrivalPlaceID);
+            }
+            return transferFlights;
         }
         public ActionResult Search ()
         {
