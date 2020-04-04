@@ -40,6 +40,7 @@ footer{
     border-radius: 5px;
     background-color: darkorange;
     color: azure;
+    margin: 42% 20% 40% 10%;
 }
 
 .empty {
@@ -48,10 +49,9 @@ footer{
 }
 
 .btnZone {
-    display: flex;
     align-items: center;
     justify-content: center;
-    background-color: green;
+
 }
 
 .mainZone {

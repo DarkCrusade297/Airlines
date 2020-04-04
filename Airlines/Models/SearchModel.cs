@@ -9,8 +9,10 @@ namespace Airlines.Models
     {
         public City from { get; set; }
         public City to { get; set; }
+        public City between { get; set; }
         public IEnumerable<Flight> flightsTo { get; set; }
         public IEnumerable<Flight> flightsFrom { get; set; }
+        public IEnumerable<TransferFlight> transferFlights { get; set; }
         public IEnumerable<Flight> flightsBetween { get; set; }
     }
 }
