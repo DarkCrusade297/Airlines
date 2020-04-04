@@ -43,8 +43,8 @@ footer{
 }
 
 .empty {
-    height: 15px;
-    background-color: white
+    height: 20px;
+    background-color: white;
 }
 
 .btnZone {
@@ -62,6 +62,7 @@ footer{
 }
 
 .flight {
+    margin-top: 20px;
     background-color: #1e3c53;
     border-radius: 5px;
 }
@@ -118,4 +119,23 @@ footer{
 
 .tickets {
     height: 100%;
+
+}
+
+.transferLine{
+    content: attr(data-title);
+    background-color: darkorange;
+    height: 5px;
+    border: 1px solid darkorange;
+    border-radius: 5px;
+}
+.transferLine:hover::after {
+    content: attr(data-title);
+}
+
+.transferAirport {
+    margin-top: 33px;
+    margin-left: 15px;
+    font-size: small;
+    color: Highlight;
 }

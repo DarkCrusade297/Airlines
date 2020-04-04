@@ -30,6 +30,7 @@
             if (document.getElementById('oneway').checked) {
                 $("#dateFrom").prop("disabled", true);
                 $("#dateFrom").prop('required', false);
+                $("#dateFrom").attr("value", "2018-01-01");
             }
             else {
                 $("#dateFrom").prop("disabled", false); 

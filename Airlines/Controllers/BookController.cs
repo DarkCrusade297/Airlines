@@ -18,35 +18,50 @@ namespace Airlines.Controllers
 
         }
         [HttpPost]
-        public ActionResult FlightsSearch(int from, int to, DateTime dateTo, DateTime? dateFrom, bool oneway, bool transfer)
+        public ActionResult FlightsSearch(int from, int to, DateTime dateTo, bool oneway, bool transfer, DateTime? dateFrom)
         {
+            DateTime endTime2 = new DateTime();
+            if (dateFrom != null)
+            {
+                endTime2 = Convert.ToDateTime(dateFrom);
+            }
             var CityFrom = db.Cities.Find(from);
             var CityTo = db.Cities.Find(to);
-            IEnumerable<Flight> flightsFrom;
+            IEnumerable<Flight> flightsFrom = new List<Flight>(); ;
+            IEnumerable<TransferFlight> transferflightsTo = new List<TransferFlight>();
+            IEnumerable<TransferFlight> transferflightsFrom = new List<TransferFlight>();
             SearchModel sm;
             DateTime endTime = dateTo.AddDays(1);
             var flightsTo = db.Flights.Where(a => a.ArrivalPlaceID == from && a.DeparturePlaceID == to && a.Arrival >= dateTo && a.Arrival < endTime).ToList();
-            if (flightsTo.Count <= 0)
-             {
-                 return PartialView("NotFound");
-             }
-            if (transfer)
+            if (oneway)
             {
-                var trFlights = getFlights(from, to, dateTo);
-
-            }
-            
-            if (!oneway)
-            {
-                flightsFrom = db.Flights.Where(a => a.ArrivalPlaceID == to && a.DeparturePlaceID == from && a.Arrival == dateFrom).ToList();
-                if (flightsTo.Count <= 0)
+                if (transfer)
+                {
+                    transferflightsTo = getFlights(from, to, dateTo).ToList();
+                }
+                if (flightsTo.Count <= 0 && transferflightsTo.Count() <= 0)
                 {
                     return PartialView("NotFound");
                 }
-                sm = new SearchModel { flightsTo = flightsTo, flightsFrom = flightsFrom, from = CityFrom, to = CityTo };
             }
             else
-            sm = new SearchModel { flightsTo = flightsTo, flightsFrom = Enumerable.Empty<Flight>(), from = CityFrom, to = CityTo };
+            {
+                DateTime time = endTime2.AddDays(1);
+                flightsFrom = db.Flights.Where(a => a.ArrivalPlaceID == to && a.DeparturePlaceID == from && a.Arrival >= dateFrom && a.Arrival < time).ToList();
+                if (transfer)
+                {
+                    transferflightsTo = getFlights(from, to, dateTo).ToList();
+                    transferflightsFrom = getFlights(to, from, endTime2).ToList();
+                }
+                if (flightsTo.Count <= 0 && transferflightsTo.Count() <= 0 && flightsFrom.Count() <= 0 && transferflightsFrom.Count() <= 0)
+                {
+                    return PartialView("NotFound");
+                }
+
+
+            }
+            sm = new SearchModel { flightsTo = flightsTo, flightsFrom = flightsFrom, from = CityFrom, to = CityTo, transferFlightsTo = transferflightsTo, transferFlightsFrom = transferflightsFrom, Transfer = transfer, OneWay = oneway};
+           // sm = new SearchModel { flightsTo = flightsTo, flightsFrom = Enumerable.Empty<Flight>(),  transferFlightsTo = transferflightsTo, from = CityFrom, to = CityTo, Transfer = transfer, OneWay = oneway };
             return PartialView(sm);
         }
         public IEnumerable<TransferFlight> getFlights (int from, int to, DateTime dateTo)
@@ -57,7 +72,7 @@ namespace Airlines.Controllers
             foreach (var item in firstFlight)
             {
                 var endTime2 = item.Departure.AddHours(3);
-                var endTime3 = item.Departure.AddHours(6);
+                var endTime3 = item.Departure.AddHours(10);
                 var secondFlight = db.Flights.Where(f => f.ArrivalPlaceID == item.DeparturePlaceID && f.Arrival >= endTime2 && f.Arrival <= endTime3 && f.DeparturePlaceID == to).ToList();
                 foreach (var f in secondFlight)
                 {
