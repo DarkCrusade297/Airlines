@@ -10,18 +10,19 @@
         @Html.DropDownList("from", ViewBag.Cities as SelectList, "--Выберите город--",
                     htmlAttributes: new { @class = "form-control"})
 
-        <label class="control-label">Куда: </label>
+        <label class="control-label ">Куда: </label>
         @Html.DropDownList("to", ViewBag.Cities as SelectList, "--Выберите город--",
                 htmlAttributes: new { @class = "form-control" })
         <label for="date">Дата отправления: </label>
         <input type="date" class="form-control" id="dateTo" name="dateTo" required />
         <label for="date">Дата возвращения </label>
         <input type="date" class="form-control" id="dateFrom" name="dateFrom" required />
-        <label for="oneway">Билет в одну сторону </label>
+        <div class="col-lg-12 empty"></div>
+        <label for="oneway">Билет в одну сторону: </label>
         @Html.CheckBox("oneway", false)
-        <label for="transfer">Возможность одной пересадки </label>
+        <label for="transfer">Возможность одной пересадки: </label>
         @Html.CheckBox("transfer", false)
-        <button type="submit" class="btn btn-primary">Поиск</button>
+        <button type="submit" class="btn btn-primary desight">Поиск</button>
     </form>
     <script>
         
