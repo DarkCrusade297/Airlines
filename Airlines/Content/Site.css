@@ -62,24 +62,26 @@ footer{
 }
 
 .flight {
+    width:800px;
     margin-top: 20px;
     background-color: #1e3c53;
     border-radius: 5px;
 }
 
 .info {
+    margin-top:-10px;
     font-size: small;
     color: grey;
 }
 
 .airline {
     margin-top: 2%;
-    font-size: x-large;
-    color: azure;
+    font-size: xx-large;
+    color: darkorange;
 }
 
 .time {
-    font-size: medium;
+    font-size: xx-large;
     color: azure;
 }
 
@@ -119,4 +121,12 @@ footer{
 
 .tickets {
     height: 100%;
+}
+
+.right{
+    text-align:right;
+}
+
+.left{
+    margin-left:-20px;
 }
