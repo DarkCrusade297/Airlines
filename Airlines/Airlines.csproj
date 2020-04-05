@@ -203,7 +203,10 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\PlaneSeats.js" />
     <Content Include="Ресурсики\logo.png" />
+    <Content Include="Ресурсики\model.jpg" />
+    <Content Include="Ресурсики\model1.jpg" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

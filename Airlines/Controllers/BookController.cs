@@ -148,5 +148,9 @@ namespace Airlines.Controllers
                 return View();
             }
         }
+        public ActionResult ChooseSeats()
+        {
+            return View();
+        }
     }
 }
