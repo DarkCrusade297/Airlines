@@ -1,17 +1,24 @@
 ﻿// план зала по рядам общая вместительность 300 мест
 // планов может быть и больше... и разные...
 k = 1;
-var cinemaHall1 = {
-    row: [12, 12]
+var cinemaHall = {
+    row: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
 },
     cinemaHallMap = '';
-$.each(cinemaHall1.row, function (row, numberOfSeats) {
+$.each(cinemaHall.row, function (row, numberOfSeats) {
     cinemaHallRow = '';
-    for (i = 1; i <= numberOfSeats; i++) {
+    for (i = 1; i <= numberOfSeats/2; i++) {
         // собираем ряды
-        cinemaHallRow += '<div class="seat" data-row="' +
+        cinemaHallRow += '<div class="Eseat" data-row="' +
             k + '" data-seat="' +
-            i + '">&nbsp;</div>';
+            i + '"></div>';
+    }
+    cinemaHallRow += '<div class="emptyBtwSeatsEconom"></div>';
+    for (i = numberOfSeats / 2 +1; i <= numberOfSeats; i++) {
+        // собираем ряды
+        cinemaHallRow += '<div class="Eseat" data-row="' +
+            k + '" data-seat="' +
+            i + '"></div>';
     }
     //собираем зал с проходами между рядами
     cinemaHallMap += cinemaHallRow + '<div class="passageBetween">&nbsp;</div>';
@@ -19,24 +26,24 @@ $.each(cinemaHall1.row, function (row, numberOfSeats) {
 });
 
 //заполняем в html зал номер 1
-$('.row1').html(cinemaHallMap);
+$('.econom').html(cinemaHallMap);
 // тут по клику определяем что место выкуплено
-$('.seat').on('click', function (e) {
+$('.Eseat').on('click', function (e) {
     // если первый раз кликнули билет выкупили, 
     // если повторно значит вернули билет
-    $(e.currentTarget).toggleClass('bay');
+    $(e.currentTarget).toggleClass('Ebay');
     //показываем сколько билетов выкуплено
-    showBaySeat();
+    EshowBaySeat();
 });
 
-function showBaySeat() {
-    result = '';
+function EshowBaySeat() {
+    resultt = '';
     //ищем все места купленные и показываем список выкупленных мест
-    $.each($('.seat.bay'), function (key, item) {
-        result += '<div class="ticket">Ряд: ' +
+    $.each($('.Eseat.Ebay'), function (key, item) {
+        resultt += '<div class="ticket">Ряд: ' +
             $(item).data().row + ' Место:' +
-            $(item).data().seat + '</div>';
+            $(item).data().seat + ' ЭК' + '</div>';
     });
 
-    $('.result').html(result);
+    $('.Eresult').html(resultt);
 }
