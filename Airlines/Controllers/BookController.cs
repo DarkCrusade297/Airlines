@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Airlines.Controllers
 {
@@ -27,6 +28,7 @@ namespace Airlines.Controllers
             }
             var CityFrom = db.Cities.Find(from);
             var CityTo = db.Cities.Find(to);
+            var players = db.Flights.Include(p => p.Plane).ToList();
             IEnumerable<Flight> flightsFrom = new List<Flight>(); ;
             IEnumerable<TransferFlight> transferflightsTo = new List<TransferFlight>();
             IEnumerable<TransferFlight> transferflightsFrom = new List<TransferFlight>();
