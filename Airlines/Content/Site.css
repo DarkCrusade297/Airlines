@@ -112,7 +112,7 @@ footer{
 }
 
 .departurePlane {
-    margin-left: -5%;
+    margin-left: -8%;
 }
 
 .arrivalPlane {
@@ -163,6 +163,19 @@ footer{
     height:230px;
 }
 
+.transferLine {
+    background-color: darkorange;
+    height: 5px;
+    border: 1px solid darkorange;
+    border-radius: 5px;
+}
+
+.transferAirport {
+    margin-top: 33px;
+    margin-left: 0px;
+    font-size: small;
+    color: Highlight;
+}
 /*Всё, что связано с сиденьями*/
 
 .cinemaHall {
