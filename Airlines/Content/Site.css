@@ -30,8 +30,14 @@ textarea {
     max-width: 280px;
 }
 
-footer{
-    text-align:center;
+.head {
+    background-color: #1e3c53;
+}
+
+footer {
+    text-align: center;
+    background-color: #1e3c53;
+    color:azure;
 }
 .clear {
     clear: both;
