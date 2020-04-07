@@ -182,8 +182,122 @@ footer {
     font-size: small;
     color: Highlight;
 }
-/*Всё, что связано с сиденьями*/
 
+.boardingPass {
+    padding-right:-15px;
+    border-radius:15px;
+    height: 230px;
+    width:70%;
+}
+
+.boardingPassHeadLeft {
+    border-right: 2px dashed azure;
+    border-top-left-radius: 15px;
+    background-color: darkorange;
+    height: 24%;
+}
+
+.boardingPassHeadRight {
+    border-top-right-radius: 15px;
+    background-color: darkorange;
+    height: 24%;
+}
+
+.boardingPassBodyLeft {
+    border-right: 2px dashed azure;
+    border-bottom-left-radius: 15px;
+    background-color: lightgray;
+    height: 76%;
+}
+
+.boardingPassBodyRight {
+    border-bottom-right-radius: 15px;
+    background-color: lightgray;
+    height: 76%;
+}
+
+.ticketHeadInfoLeft{
+    text-align:left;
+    font-size:xx-large;
+}
+
+.ticketHeadInfoRight {
+    margin-top:5%;
+    text-align: left;
+    font-size: x-large;
+}
+
+.ticketInfoLeftPartRight {
+    margin-left:-13px;
+    margin-top:1px;
+    font-size: xx-small;
+}
+
+.ticketInfoRightPartRight {
+    margin-right:-13px;
+    margin-left: -13px;
+    margin-top: 1px;
+    font-size: xx-small;
+}
+
+.ticketInfo {
+    margin-top: 5px;
+    height: 15px;
+    border: 1px solid black;
+}
+
+.inf {
+    font-size: xx-small;
+    height: 15px;
+}
+.l {
+    margin-top: 5px;
+    height: 15px;
+}
+
+.obertka1 {
+    width: 100%;
+    height: 100%;
+}
+
+.down{
+    margin-top:5px;
+}
+
+.downLeft{
+    margin-top:15px;
+}
+
+.firstLine {
+    border: 1px solid black;
+    height: 20px;
+}
+.secondLine {
+    border: 1px solid black;
+    height: 30px;
+}
+
+.leftBodyDivInfo {
+    text-align:left;
+    height: 15px;
+    margin-top: 5px;
+}
+
+.leftBodyRightInfo {
+    font-size:medium;
+    margin-top:-4px;
+}
+
+.ticketInfoLeftPartLeft{
+    font-size:large;
+}
+
+.joke{
+    margin-top:5px;
+    text-align:center;
+}
+
+/*Всё, что связано с сиденьями*/
 .cinemaHall {
     text-align: center;
     display: inline-block;
