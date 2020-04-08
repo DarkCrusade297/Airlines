@@ -270,6 +270,7 @@
     <Content Include="Views\Book\NotFound.cshtml" />
     <Content Include="Views\Book\TransferFlight.cshtml" />
     <Content Include="Views\Book\SingleFlight.cshtml" />
+    <Content Include="Views\Book\Ticket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

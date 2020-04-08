@@ -18,6 +18,11 @@ namespace Airlines.Controllers
             return View();
 
         }
+        public ActionResult Ticket()
+        {
+            return View();
+
+        }
         [HttpPost]
         public ActionResult FlightsSearch(int from, int to, DateTime dateTo, bool oneway, bool transfer, DateTime? dateFrom)
         {
