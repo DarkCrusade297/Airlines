@@ -93,6 +93,15 @@ namespace Airlines.Controllers
             ViewBag.Cities = new SelectList(db.Cities, "ID", "Name");
             return View();
         }
+        public ActionResult ChooseSeats (List<int> FlightID)
+        {
+            var flights = new List<Flight>();
+            foreach ( var item in FlightID)
+            {
+                flights.Add(db.Flights.Find(item));
+            }
+            return View(flights);
+        }
 
         // GET: Book/Details/5
         public ActionResult Details(int id)
@@ -164,10 +173,6 @@ namespace Airlines.Controllers
             {
                 return View();
             }
-        }
-        public ActionResult ChooseSeats()
-        {
-            return View();
         }
     }
 }
