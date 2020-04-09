@@ -9,8 +9,7 @@ namespace Airlines.Models
     {
         public bool Transfer { get; set; }
         public bool OneWay { get; set; }
-        public City from { get; set; }
-        public City to { get; set; }
+        public int Person { get; set; }
         public IEnumerable<Flight> flightsTo { get; set; }
         public IEnumerable<Flight> flightsFrom { get; set; }
         public IEnumerable<TransferFlight> transferFlightsTo { get; set; }

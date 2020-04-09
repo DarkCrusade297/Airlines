@@ -18,5 +18,6 @@ namespace Airlines.Models
         public DateTime Arrival { get; set; }
         public DateTime Departure { get; set; }
         public TimeSpan TravelTime { get; set; }
+        public int numberOfSeats { get; set; }
     }
 }

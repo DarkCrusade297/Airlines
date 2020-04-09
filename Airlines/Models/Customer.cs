@@ -11,9 +11,9 @@ namespace Airlines.Models
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Patronymic { get; set; }
+        public char Sex { get; set; }
         public DateTime BirthDate { get; set; } = DateTime.Now;
         public string PassportNumber { get; set; }
-        public DateTime PassportDate { get; set; } = DateTime.Now;
-        public string PhoneNumber { get; set; }
+        public string Citizenship { get; set; }
     }
 }

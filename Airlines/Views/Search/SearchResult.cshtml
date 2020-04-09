@@ -1,0 +1,121 @@
+﻿@model Airlines.Models.SearchModel
+
+<div id="results">
+    @if (Model.OneWay)
+    {
+        foreach (var item in Model.flightsTo)
+        {
+            <div class="container-fluid flight">
+                @Html.Partial("SingleFlight", item)
+                <div class="col-lg-2 btnZone">
+                    @using (Html.BeginForm("ChooseSeats", "Book", FormMethod.Post))
+                    {
+                        @Html.Hidden("FlightID", item.ID)
+                        @Html.Hidden("FlightID", item.ID)
+                        @Html.Hidden("Person", Model.Person)
+                        <button class="btn btnOrder" type="submit"><strong>Забронировать</strong></button>
+                    }
+                </div>
+
+            </div>
+            <div class="col-lg-12 empty"></div>
+        }
+        if (Model.Transfer)
+        {
+            foreach (var item in Model.transferFlightsTo)
+            {
+                <div class="container-fluid flight">
+                    @Html.Partial("TransferFlight", item)
+                    <div class="col-lg-2 btnZone">
+                        @using (Html.BeginForm("ChooseSeats", "Book", FormMethod.Post))
+                        {
+                            @Html.Hidden("FlightID", @item.FirstFlight.ID)
+                            @Html.Hidden("FlightID", @item.SecondFlight.ID)
+                            <button class="btn btnOrder" type="submit"><strong>Забронировать</strong></button>
+                        }
+                    </div>
+                </div>
+                <div class="col-lg-12 empty"></div>
+            }
+        }
+    }
+    @if (!Model.OneWay)
+    {
+        foreach (var item in Model.flightsTo)
+        {
+            int check = Model.flightsFrom.Count();
+            for (int i = 0; i < check; i++)
+            {
+                <div class="container-fluid flight">
+
+                    @{ Airlines.Models.Flight f = Model.flightsFrom.ElementAt(i);
+                        Html.RenderPartial("SingleFlight", item);
+                        Html.RenderPartial("SingleFlight", f);
+                    }
+                    <div class="col-lg-2 btnZone">
+                        <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                    </div>
+                </div>
+                <div class="col-lg-12 empty"></div>
+            }
+        }
+        if (Model.Transfer)
+        {
+            foreach (var item in Model.flightsTo)
+            {
+                int check = Model.transferFlightsFrom.Count();
+                for (int i = 0; i < check; i++)
+                {
+                    <div class="container-fluid flight">
+
+                        @{ Airlines.Models.TransferFlight f = Model.transferFlightsFrom.ElementAt(i);
+                            Html.RenderPartial("SingleFlight", item);
+                            Html.RenderPartial("TransferFlight", f);
+                        }
+                        <div class="col-lg-2 btnZone">
+                            <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 empty"></div>
+                }
+            }
+            foreach (var item in Model.transferFlightsTo)
+            {
+                int check = Model.flightsFrom.Count();
+                for (int i = 0; i < check; i++)
+                {
+                    <div class="container-fluid flight">
+
+                        @{Airlines.Models.Flight f = Model.flightsFrom.ElementAt(i);
+                            Html.RenderPartial("TransferFlight", item);
+                            Html.RenderPartial("SingleFlight", f);
+                        }
+                        <div class="col-lg-2 btnZone">
+                            <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 empty"></div>
+                }
+            }
+            foreach (var item in Model.transferFlightsTo)
+            {
+                int check = Model.transferFlightsFrom.Count();
+                for (int i = 0; i < check; i++)
+                {
+                    <div class="container-fluid flight">
+                        @{ Airlines.Models.TransferFlight f = Model.transferFlightsFrom.ElementAt(i);
+                            Html.RenderPartial("TransferFlight", item);
+                            Html.RenderPartial("TransferFlight", f);
+                        }
+
+                        <div class="col-lg-2 btnZone">
+                            <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 empty"></div>
+                }
+            }
+
+        }
+    }
+</div>
