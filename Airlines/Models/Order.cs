@@ -9,7 +9,6 @@ namespace Airlines.Models
     {
         public int ID { get; set; }
         public int UserId { get; set; }
-        public ApplicationUser User { get; set; }
 
     }
 }

@@ -15,7 +15,7 @@ namespace Airlines.Controllers
         {
             return View();
         }
-        public ActionResult ChooseSeats(List<int> FlightID, int Person)
+        public ActionResult ChooseSeats(List<Flight> FlightID, int Person)
         {
             var flights = new List<Flight>();
             foreach (var item in FlightID)

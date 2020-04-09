@@ -179,6 +179,10 @@
     <Compile Include="Migrations\202004090227479_m.Designer.cs">
       <DependentUpon>202004090227479_m.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004090429113_mm.cs" />
+    <Compile Include="Migrations\202004090429113_mm.Designer.cs">
+      <DependentUpon>202004090429113_mm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AirlinesContext.cs" />
@@ -291,6 +295,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004090227479_m.resx">
       <DependentUpon>202004090227479_m.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004090429113_mm.resx">
+      <DependentUpon>202004090429113_mm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

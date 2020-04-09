@@ -31,6 +31,7 @@
                         {
                             @Html.Hidden("FlightID", @item.FirstFlight.ID)
                             @Html.Hidden("FlightID", @item.SecondFlight.ID)
+                            @Html.Hidden("Person", Model.Person)
                             <button class="btn btnOrder" type="submit"><strong>Забронировать</strong></button>
                         }
                     </div>
