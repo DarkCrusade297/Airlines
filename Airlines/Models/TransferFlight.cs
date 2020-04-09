@@ -9,10 +9,13 @@ namespace Airlines.Models
     {
         public Flight FirstFlight { get; set; }
         public Flight SecondFlight { get; set; }
+        public TimeSpan TravelTime { get; set; }
         public TransferFlight (Flight ff, Flight sf)
         {
             FirstFlight = ff;
             SecondFlight = sf;
+            TravelTime = ff.TravelTime + sf.TravelTime + sf.Arrival.Subtract(ff.Departure);
+
         }
 
     }

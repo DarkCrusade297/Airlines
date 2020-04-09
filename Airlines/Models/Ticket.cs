@@ -20,5 +20,7 @@ namespace Airlines.Models
         public int BoardingPriority { get; set; }
         public DateTime DeapartureTime { get; set; }
         public string DepartureTerminal { get; set; }
+        public int? OrderID { get; set; }
+        public Order Order { get; set; }
     }
 }
