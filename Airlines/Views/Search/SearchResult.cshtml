@@ -11,7 +11,6 @@
                     @using (Html.BeginForm("ChooseSeats", "Book", FormMethod.Post))
                     {
                         @Html.Hidden("FlightID", item.ID)
-                        @Html.Hidden("FlightID", item.ID)
                         @Html.Hidden("Person", Model.Person)
                         <button class="btn btnOrder" type="submit"><strong>Забронировать</strong></button>
                     }
@@ -29,8 +28,8 @@
                     <div class="col-lg-2 btnZone">
                         @using (Html.BeginForm("ChooseSeats", "Book", FormMethod.Post))
                         {
-                            @Html.Hidden("FlightID", @item.FirstFlight.ID)
-                            @Html.Hidden("FlightID", @item.SecondFlight.ID)
+                            @Html.Hidden("FlightID", item.FirstFlight.ID)
+                            @Html.Hidden("FlightID", item.SecondFlight.ID)
                             @Html.Hidden("Person", Model.Person)
                             <button class="btn btnOrder" type="submit"><strong>Забронировать</strong></button>
                         }
@@ -54,8 +53,15 @@
                         Html.RenderPartial("SingleFlight", f);
                     }
                     <div class="col-lg-2 btnZone">
-                        <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                        @using (Html.BeginForm("ChooseSeats", "Book", FormMethod.Post))
+                        {
+                            @Html.Hidden("FlightID", item.ID)
+                            @Html.Hidden("FlightID", f.ID)
+                            @Html.Hidden("Person", Model.Person)
+                            <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                        }
                     </div>
+
                 </div>
                 <div class="col-lg-12 empty"></div>
             }
@@ -74,7 +80,14 @@
                             Html.RenderPartial("TransferFlight", f);
                         }
                         <div class="col-lg-2 btnZone">
-                            <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                            @using (Html.BeginForm("ChooseSeats", "Book", FormMethod.Post))
+                            {
+                                @Html.Hidden("FlightID", item.ID)
+                                @Html.Hidden("FlightID", f.FirstFlight.ID)
+                                @Html.Hidden("FlightID", f.SecondFlight.ID)
+                                @Html.Hidden("Person", Model.Person)
+                                <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                            }
                         </div>
                     </div>
                     <div class="col-lg-12 empty"></div>
@@ -92,7 +105,14 @@
                             Html.RenderPartial("SingleFlight", f);
                         }
                         <div class="col-lg-2 btnZone">
-                            <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                            @using (Html.BeginForm("ChooseSeats", "Book", FormMethod.Post))
+                            {
+                                @Html.Hidden("FlightID", item.FirstFlight.ID)
+                                @Html.Hidden("FlightID", item.SecondFlight.ID)
+                                @Html.Hidden("FlightID", f.ID)
+                                @Html.Hidden("Person", Model.Person)
+                                <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                            }
                         </div>
                     </div>
                     <div class="col-lg-12 empty"></div>
@@ -110,7 +130,15 @@
                         }
 
                         <div class="col-lg-2 btnZone">
-                            <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                            @using (Html.BeginForm("ChooseSeats", "Book", FormMethod.Post))
+                            {
+                                @Html.Hidden("FlightID", item.FirstFlight.ID)
+                                @Html.Hidden("FlightID", item.SecondFlight.ID)
+                                @Html.Hidden("FlightID", f.FirstFlight.ID)
+                                @Html.Hidden("FlightID", f.SecondFlight.ID)
+                                @Html.Hidden("Person", Model.Person)
+                                <button class="btn btnOrder"><strong>Забронировать</strong></button>
+                            }
                         </div>
                     </div>
                     <div class="col-lg-12 empty"></div>

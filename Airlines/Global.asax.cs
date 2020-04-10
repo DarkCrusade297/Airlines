@@ -14,7 +14,6 @@ namespace Airlines
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new DbInitializer());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

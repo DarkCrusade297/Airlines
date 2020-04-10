@@ -7,7 +7,7 @@ using System.Data.Entity;
 namespace Airlines.Models
 {
     public class AirlinesContext: DbContext { 
-         public AirlinesContext() : base("DefaultConnection")
+         public AirlinesContext()
     { }
 
         public DbSet<Customer> Customers { get; set; }
@@ -16,16 +16,8 @@ namespace Airlines.Models
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Seat> Seats { get; set; }
         public DbSet<City> Cities{ get; set; }
+        public DbSet<Order> Orders { get; set; }
 
 
-    }
-    public class AirlinesDbInitializer: DropCreateDatabaseAlways<AirlinesContext>
-    {
-        protected override void Seed (AirlinesContext db)
-        {
-            db.Customers.Add(new Customer { Name = "Artur", Surname = "Platov", Patronymic = "Sergeevich" });
-            db.Customers.Add(new Customer { Name = "Sasha", Surname = "Platova", Patronymic = "Sergeevna" });
-            base.Seed(db);
-        }
     }
 }
