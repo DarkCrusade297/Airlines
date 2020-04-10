@@ -15,16 +15,22 @@ namespace Airlines.Controllers
         {
             return View();
         }
-        public ActionResult ChooseSeats(List<Flight> FlightID, int Person)
+        public ActionResult ChooseSeats(List<int> FlightID, int Person)
         {
             var flights = new List<Flight>();
-            foreach (var item in FlightID)
+           foreach (var item in FlightID)
             {
                 flights.Add(db.Flights.Find(item));
             }
             var per = Person;
-            return View(flights);
+            var bm = new BookModel() { Person=Person, Flights = flights };
+            return View(bm);
         }
+        public ActionResult Confirmation(Customer customers)
+        {
+            return View();
+        }
+
 
         // GET: Book/Details/5
         public ActionResult Details(int id)
