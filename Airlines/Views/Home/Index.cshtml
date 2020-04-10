@@ -5,23 +5,6 @@
 <h3>
    Пассажиры
 </h3>
-    <table>
-        <tr>
-            <td><p>Имя</p></td>
-            <td><p>Фамилия</p></td>
-            <td><p>Отчество</p></td>
-            <td><p></p></td>
-        </tr>
-        @foreach (var b in ViewBag.Customers)
-        {
-        <tr>
-            <td><p>@b.Name</p></td>
-            <td><p>@b.Surname</p></td>
-            <td><p>@b.Patronymic</p></td>
-            <td><p><a href="/Home/Go/@b.CustomerID">Перейти</a> </p></td>
-        </tr>
-        }
-    </table>
 </div>
 
 

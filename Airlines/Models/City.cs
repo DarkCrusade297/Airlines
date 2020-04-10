@@ -11,8 +11,5 @@ namespace Airlines.Models
         public string Name { get; set; }
         public string Airport { get; set; }
         public DateTime TimeZone { get; set; }
-
-
-
     }
 }
