@@ -7,7 +7,7 @@ using System.Data.Entity;
 namespace Airlines.Models
 {
     public class AirlinesContext: DbContext { 
-         public AirlinesContext() : base("DefaultConnection")
+         public AirlinesContext()
     { }
 
         public DbSet<Customer> Customers { get; set; }

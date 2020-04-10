@@ -179,7 +179,6 @@
     <Compile Include="Models\AirlinesContext.cs" />
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\City.cs" />
-    <Compile Include="Models\DbInitializer.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Plane.cs" />
     <Compile Include="Models\Customer.cs" />
