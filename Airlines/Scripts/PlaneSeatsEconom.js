@@ -2,7 +2,7 @@
 // планов может быть и больше... и разные...
 k = 1;
 var cinemaHall = {
-    row: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+    row: [6, 6, 6, 6, 6, 6, 6, 6]
 },
     cinemaHallMap = '';
 $.each(cinemaHall.row, function (row, numberOfSeats) {
@@ -29,11 +29,25 @@ $.each(cinemaHall.row, function (row, numberOfSeats) {
 $('.econom').html(cinemaHallMap);
 // тут по клику определяем что место выкуплено
 $('.Eseat').on('click', function (e) {
+    var counter = $('#p').val();
     // если первый раз кликнули билет выкупили, 
     // если повторно значит вернули билет
-    $(e.currentTarget).toggleClass('Ebay');
-    //показываем сколько билетов выкуплено
-    EshowBaySeat();
+    if (counter <= 3 && e.currentTarget.classList.contains('Ebay')== false) {
+        $(e.currentTarget).toggleClass('Ebay', true);
+        //показываем сколько билетов выкуплено
+        EshowBaySeat();
+        counter++;
+        $('#p').val(counter);
+    }
+    else {
+        if (e.currentTarget.classList.contains('Ebay')) {
+            $(e.currentTarget).toggleClass('Ebay', false);
+            //показываем сколько билетов выкуплено
+            EshowBaySeat();
+            counter--;
+            $('#p').val(counter);
+        }
+    }
 });
 
 function EshowBaySeat() {
