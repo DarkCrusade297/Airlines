@@ -26,7 +26,7 @@ namespace Airlines.Controllers
             var bm = new BookModel() { Person=Person, Flights = flights };
             return View(bm);
         }
-        public ActionResult Confirmation(Customer customers)
+        public ActionResult Confirmation(List<Customer> customers)
         {
             return View();
         }
