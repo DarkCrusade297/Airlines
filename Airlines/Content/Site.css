@@ -35,13 +35,26 @@ textarea {
 }
 
 .he {
+    margin-bottom:20px;
     background-color: darkorange;
+}
+
+.log{
+    display:inline-block;
+}
+
+.nav > li > a {
+    color: azure;
+}
+
+.nav > li > a:hover {
+    color: #1e3c53
 }
 
 footer {
     text-align: center;
     background-color: #1e3c53;
-    color:azure;
+    color: azure;
 }
 .clear {
     clear: both;
@@ -342,10 +355,11 @@ footer {
     display: block;
 }
 
-.Bbay {
-    background-color: red;
+.no {
+    background-color: black;
 }
-.Ebay {
+
+.bay {
     background-color: green;
 }
 
