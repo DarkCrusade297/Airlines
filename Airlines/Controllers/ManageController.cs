@@ -15,15 +15,24 @@ namespace Airlines.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        AirlinesContext db = new AirlinesContext();
 
         public ManageController()
         {
         }
-
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+        }
+
+
+        public ActionResult Orders()
+        {
+            var userId = User.Identity.GetUserId();
+            var orders = db.Orders.Where(c => c.UserId == userId).ToList();
+            ViewBag.Orders = orders;
+            return View();
         }
 
         public ApplicationSignInManager SignInManager
