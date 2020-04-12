@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace Airlines.Controllers
 {
+    [Authorize]
     public class BookController : Controller
     {
         AirlinesContext db = new AirlinesContext();
@@ -33,6 +35,14 @@ namespace Airlines.Controllers
         }
         public ActionResult Confirmation(List<Customer> customers)
         {
+            foreach (var item in customers)
+            {
+                db.Customers.Add(item);
+            }
+            Order order = new Order();
+            order.UserId = User.Identity.GetUserId();
+            db.Orders.Add(order);
+            db.SaveChanges();
             return View();
         }
 
