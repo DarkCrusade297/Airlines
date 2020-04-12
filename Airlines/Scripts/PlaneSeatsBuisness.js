@@ -8,12 +8,12 @@ $.each(PlaneHall.row, function (row, numberOfSeats) {
     PlaneHallRow = '';
     for (i = 1; i <= numberOfSeats/2; i++) {
         // собираем ряды
-        cinemaHallRow += '<div class="Eseat" id="' + k + '/' + i + '/' + 'b' + '"></div>';
+        PlaneHallRow += '<div class="Bseat" id="' + k + '/' + i + '/' + 'b' + '"></div>';
     }
     PlaneHallRow += '<div class="emptyBtwSeatsBuisness"></div>';
     for (i = numberOfSeats / 2 +1; i <= numberOfSeats; i++) {
         // собираем ряды
-        cinemaHallRow += '<div class="Eseat" id="' + k + '/' + i + '/' + 'b' + '"></div>';
+        PlaneHallRow += '<div class="Bseat" id="' + k + '/' + i + '/' + 'b' + '"></div>';
     }
     PlaneHallRow += '<div class="emptyBuisness"></div>';
     //собираем отсек с проходами между рядами
@@ -25,19 +25,19 @@ $.each(PlaneHall.row, function (row, numberOfSeats) {
 $('.buisness').html(PlaneHallMap);
 // тут по клику определяем что место выкуплено
 $('.Bseat').on('click', function (e) {
-    var counter = $('#p').val();
+    var counter = $('#c').val();
     // fl полуячаем из e e.currentTarget.GetAttr('а');
     //
     // если первый раз кликнули билет выкупили, 
     // если повторно значит вернули билет
     if (e.currentTarget.classList.contains('no') == true) { }
     else {
-        if (counter <= 3 && e.currentTarget.classList.contains('bay') == false) {
+        if (counter < $('#p').val() && e.currentTarget.classList.contains('bay') == false) {
             $(e.currentTarget).toggleClass('bay', true);
             //показываем сколько билетов выкуплено
             showBayBSeat();
             counter++;
-            $('#p').val(counter);
+            $('#c').val(counter);
         }
         else {
             if (e.currentTarget.classList.contains('bay')) {
@@ -45,7 +45,7 @@ $('.Bseat').on('click', function (e) {
                 //показываем сколько билетов выкуплено
                 showBayBSeat();
                 counter--;
-                $('#p').val(counter);
+                $('#c').val(counter);
             }
         }
     }
