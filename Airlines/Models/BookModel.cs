@@ -9,6 +9,7 @@ namespace Airlines.Models
     {
         public int Person { get; set; }
         public IEnumerable<Flight> Flights { get; set; }
+        public IEnumerable<string> Seats { get; set; }
 
     }
 }

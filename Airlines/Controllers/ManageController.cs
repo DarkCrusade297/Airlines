@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Airlines.Models;
+using System.Data.Entity;
 
 namespace Airlines.Controllers
 {
@@ -30,7 +31,7 @@ namespace Airlines.Controllers
         public ActionResult Orders()
         {
             var userId = User.Identity.GetUserId();
-            var orders = db.Orders.Where(c => c.UserId == userId).ToList();
+            var orders = db.Orders.Where(c => c.UserId == userId).Include(c => c.Tickets).ToList();
             ViewBag.Orders = orders;
             return View();
         }

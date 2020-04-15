@@ -24,11 +24,19 @@ namespace Airlines.Controllers
             {
                 flights.Add(db.Flights.Find(item));
             }
-            var per = Person;
-            var bm = new BookModel() { Person=Person, Flights = flights };
+            var flight = flights.First();
+            var tickets = db.Tickets.Where(c => c.FlightID == flight.ID).ToList();
+            var seats = new List<string>();
+            foreach (var item in tickets)
+            {
+                var id = item.SeatID;
+                var seat = db.Seats.Where(c => c.SeatID == id).First();
+                seats.Add(seat.SeatName);
+            }
+            var bm = new BookModel() { Person=Person, Flights = flights, Seats = seats };
             return View(bm);
         }
-        public ActionResult Confirmation(List<Customer> customers)
+        public ActionResult Confirmation(List<Customer> customers, BookModel bm)
         {
             foreach (var item in customers)
             {
