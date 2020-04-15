@@ -17,6 +17,11 @@ namespace Airlines.Controllers
         {
             return View();
         }
+
+        public ActionResult r()
+        {
+            return View();
+        }
         public ActionResult ChooseSeats(List<int> FlightID, int Person)
         {
             var flights = new List<Flight>();

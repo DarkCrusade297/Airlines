@@ -47,24 +47,19 @@
         }
 
 
-    //Здесь код самолета
+        <div class="col-lg-12 container planeModel">
+            <div class="rows">
+                <div class="buisness"></div>
+                <div class="empty1"></div>
+                <div class="econom"></div>
+            </div>
+        </div>
 
 
     <button type="submit" class="btn btn-primary desight">Подтвердить</button>
     }
-
-
-<div class='Bresult'>
-</div>
-<div class='Eresult'>
-</div>
-<div class="col-lg-4 container planeModel">
-    <div class="rows">
-        <div class="buisness"></div>
-        <div class="empty1"></div>
-        <div class="econom"></div>
-    </div>
-</div>
+<input id="p" type="hidden" value="@Model.Person"/>
+<input id="c" type="hidden" value="0" />
 <!--секция скриптов-->
 @section Scripts {
     @Scripts.Render("~/scripts/PlaneSeatsEconom.js")

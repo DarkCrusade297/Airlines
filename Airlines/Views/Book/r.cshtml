@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+<div class="col-lg-4 container planeModel">
+    <div class="rows">
+        <div class="buisness"></div>
+        <div class="empty1"></div>
+        <div class="econom"></div>
+    </div>
+</div>
+<!--секция скриптов-->
+@section Scripts {
+    @Scripts.Render("~/scripts/PlaneSeatsEconom.js")
+    @Scripts.Render("~/scripts/PlaneSeatsBuisness.js")
+}

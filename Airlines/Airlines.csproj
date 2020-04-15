@@ -208,7 +208,7 @@
     <Content Include="Scripts\PlaneSeatsBuisness.js" />
     <Content Include="Scripts\PlaneSeatsEconom.js" />
     <Content Include="Ресурсики\logo.png" />
-    <Content Include="Ресурсики\model.jpg" />
+    <Content Include="Ресурсики\model.png" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -264,9 +264,10 @@
     <Content Include="Views\Search\TransferFlight.cshtml" />
     <Content Include="Views\Search\SingleFlight.cshtml" />
     <Content Include="Views\Book\Ticket.cshtml" />
+    <Content Include="Views\Book\CustomerForm.cshtml" />
     <Content Include="Views\Book\CustomersInfo.cshtml" />
     <Content Include="Views\Book\Confirmation.cshtml" />
-    <Content Include="Views\Manage\Orders.cshtml" />
+    <Content Include="Views\Book\r.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
