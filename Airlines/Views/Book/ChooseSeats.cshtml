@@ -11,52 +11,68 @@
     for (int i = 0; i < Model.Person; i++)
     {
         <h2>@(i + 1) пассажир</h2>
-      
+
               <div class="form-row">
-            <div class="form-group col-md-3">
+            <div class="form-group col-lg-3 col-md-3 col-sm-6">
                 <label for="Surname">Фамилия</label>
                 <input type="text" class="form-control" name="customers[@i].Surname" id="Surname" placeholder="Фамилия" required>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-lg-3 col-md-3 col-sm-6">
                 <label for="Name">Имя</label>
                 <input type="text" class="form-control" name="customers[@i].Name" id="Name" placeholder="Имя" required>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-lg-3 col-md-3 col-sm-6">
                 <label for="Patronymic">Отчество</label>
-                <input type="text" class="form-control" name="customers[@i].Patronymic" id="Patronymic" placeholder="Отчество" required>
+                <input type="text" class="form-control" name="customers[@i].Patronymic" id="Patronymic" placeholder="Отчество">
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-lg-3 col-md-3 col-sm-6">
                 <label for="Sex">Пол</label>
-                <input type="text" class="form-control" name="customers[@i].Sex" id="Sex" placeholder="Пол" required>
+                @Html.DropDownList("customers["+@i+"].Sex", new SelectList ( new string[] { "Мужской", "Женский" } ),
+                           htmlAttributes: new { @class = "form-control" })
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-lg-3 col-md-3 col-sm-6 ">
                 <label for="BirthDate">Дата рождения</label>
                 <input type="date" class="form-control" name="customers[@i].BirthDate" id="BirthDate" placeholder="Дата рождения" required>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-lg-3 col-md-3 col-sm-6">
                 <label for="PassportNumber">Паспорт</label>
                 <input type="text" class="form-control" name="customers[@i].PassportNumber" id="PassportNumber" placeholder="Серия и № паспорта" required>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-lg-3 col-md-3 col-sm-6">
                 <label for="Citizenship">Гражданство</label>
                 <input type="text" class="form-control" name="customers[@i].Citizenship" id="Citizenship" placeholder="Гражданство" required>
             </div>
         </div>
+    }
+    for (int i=0; i<Model.Flights.Count(); i++)
+    {
+        @Html.Hidden("flights[" + i + "]", Model.Flights.ElementAt(i).ID);
+    }
+
+    <div>
+        @{ int c = 1; }
+        @foreach (var item in Model.Seats)
+        {
+            Html.Hidden("seat" + c, item);
+            c++;
         }
-
-
-        <div class="col-lg-12 container planeModel">
+    </div>
+    <div >
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 container planeModel">
             <div class="rows">
                 <div class="buisness"></div>
                 <div class="empty1"></div>
                 <div class="econom"></div>
             </div>
         </div>
+    </div>
 
 
-    <button type="submit" class="btn btn-primary desight">Подтвердить</button>
+        <div>
+            <button type="submit" class="btn btnOrder desight">Подтвердить</button>
+        </div>
     }
 <input id="p" type="hidden" value="@Model.Person"/>
 <input id="c" type="hidden" value="0" />

@@ -1,0 +1,11 @@
+﻿@model Airlines.Models.Order
+@{
+    ViewBag.Title = "Tickets";
+}
+
+<h2>Tickets</h2>
+@foreach (var item in Model.Tickets)
+{
+    Html.RenderPartial("Ticket");
+}
+

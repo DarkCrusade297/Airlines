@@ -12,8 +12,6 @@ namespace Airlines.Controllers
         AirlinesContext db = new AirlinesContext();
         public ActionResult Index()
         {
-            var customers = db.Customers;
-            ViewBag.Customers = customers;
             return View();
         }
 

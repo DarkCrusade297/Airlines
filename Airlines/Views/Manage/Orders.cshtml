@@ -1,11 +1,39 @@
 ﻿
 @{
-    ViewBag.Title = "Orders";
+    ViewBag.Title = "История бронирований";
 }
+<div class="container">
+    <h2>История бронирований</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Дата бронирования</th>
+                <th scope="col">Маршрут</th>
+                <th scope="col">Количество билетов</th>
 
-<h2>Orders</h2>
-@foreach (var item in ViewBag.Orders)
-{
-    <p>@item.ID</p>
-}
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in ViewBag.Orders)
+            {
+                using (Html.BeginForm("Tickets", "Manage", FormMethod.Post))
+                {
+                    
+            <tr>
+                <th scope="row">@item.ID<input type="hidden" name="OrderID" value="@item.ID" /></th>
+                <td>@item.OrderTime</td>
+                <th>@item.Tickets[0].Flight.ArrivalPlace.Name - @item.Tickets[item.Tickets.Count - 1].Flight.DeparturePlace.Name</th>
+                <td>@item.Tickets.Count</td>
+                <td><button type="submit" class="btn btnOrder desight">Подробнее</button></td>
+            </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
 
