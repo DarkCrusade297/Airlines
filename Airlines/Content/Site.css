@@ -71,6 +71,7 @@ footer {
 .clear {
     clear: both;
 }
+
 .btnOrder {
     border-radius: 5px;
     background-color: #ffa700;
@@ -372,11 +373,16 @@ footer {
 }
 
 .no {
+    cursor: not-allowed;
     background-color: black;
 }
 
 .bay {
-    background-color: green;
+    background-color: #ffa700;
+}
+
+.ListBox{
+    visibility:hidden;
 }
 
 .Bresult {

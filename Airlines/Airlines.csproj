@@ -211,7 +211,6 @@
     <Content Include="Scripts\esm\popper.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\PlaneSeatsBuisness.js" />
     <Content Include="Scripts\PlaneSeatsEconom.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
