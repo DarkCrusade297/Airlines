@@ -39,7 +39,7 @@ namespace Airlines.Controllers
             var bm = new BookModel() { Person = Person, Flights = flights, Seats = seats };
             return View(bm);
         }
-        public ActionResult Confirmation(List<Customer> customers, List<int> flights)
+        public ActionResult Confirmation(List<Customer> customers, List<int> flights, string [] countires)
         {
             foreach (var item in customers)
             {
