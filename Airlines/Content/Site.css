@@ -385,6 +385,10 @@ footer {
     visibility:hidden;
 }
 
+.tee{
+    color: black;
+}
+
 .Bresult {
     font-size: 10px;
     display: inline-block;
