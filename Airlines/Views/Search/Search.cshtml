@@ -5,63 +5,86 @@
 @Scripts.Render("~/scripts/jquery-3.3.1.min.js")
 @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
 @Scripts.Render("~/scripts/jquery-3.3.1.js")
-<div>
+@Scripts.Render("~/scripts/bootstrap.js")
+<div class="searchZone">
+    <div class="container">
+        <h1>Бронирование авиабилетов - это просто!</h1>
+        <h3></h3>
 
-    <form class="form-inline" action="/Search/SearchResult" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" id="form0" method="post">
-        <label class="control-label">Откуда: </label>
-        @Html.DropDownList("from", ViewBag.Cities as SelectList, "--Выберите город--",
-                    htmlAttributes: new { @class = "form-control"})
+        <form action="/Search/SearchResult" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#results" id="form0" method="post">
+            <div class="form-row">
+                <div class="form-group col-lg-3 col-md-3 col-sm-6">
+                    <label for="from">Откуда: </label>
+                    @Html.DropDownList("from", ViewBag.Cities as SelectList, "--Выберите город--",
+                                htmlAttributes: new { @class = "form-control"})
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6">
+                    <label class="control-label ">Куда: </label>
+                    @Html.DropDownList("to", ViewBag.Cities as SelectList, "--Выберите город--",
+                            htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6">
 
-        <label class="control-label ">Куда: </label>
-        @Html.DropDownList("to", ViewBag.Cities as SelectList, "--Выберите город--",
-                htmlAttributes: new { @class = "form-control" })
+                    <label for="date">Дата отправления: </label>
+                    <input type="date" class="form-control" id="dateTo" name="dateTo" required />
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6">
 
-        <label for="date">Дата отправления: </label>
-        <input type="date" class="form-control" id="dateTo" name="dateTo" required />
-
-        <label for="date">Дата возвращения </label>
-        <input type="date" class="form-control" id="dateFrom" name="dateFrom" required />
-
-        <input type="number" class="form-control" id="person" name="person" value="1" size="5"/>
-            @*<button class="btn btn-outline-secondary" id="minus" type="button">-</button>
-            <button class="btn btn-outline-secondary" id="plus" type="button">+</button>*@
-
-        <div class="col-lg-12 empty"></div>
-        <label for="oneway">Билет в одну сторону: </label>
-        @Html.CheckBox("oneway", false)
-        <label for="transfer">Возможность одной пересадки: </label>
-        @Html.CheckBox("transfer", false)
-        <button type="submit" class="btn btn-primary desight">Поиск</button>
-    </form>
-    <script>
-        document.getElementById('oneway').onclick = function () {
-            if (document.getElementById('oneway').checked) {
-                $("#dateFrom").prop("disabled", true);
-                $("#dateFrom").prop('required', false);
-                $("#dateFrom").attr("value", "2018-01-01");
-            }
-            else {
-                $("#dateFrom").prop("disabled", false);
-                $("#dateFrom").prop('required', true);
-            }
-        }
-    </script>
-    <script>
-        $('#minus').on('click', function (e) {
-            var counter = $('#person').val();
-            if (counter > 1) {
-                counter--;
-                $('#person').val(counter);
-            }
-            });
-        $('#plus').on('click', function (e) {
-            var counter = $('#person').val();
-            counter++;
-            $('#person').val(counter);
-        });
-    </script>
-    <div id="results"></div>
+                    <label for="date">Дата возвращения </label>
+                    <input type="date" class="form-control" id="dateFrom" name="dateFrom" required />
+                </div>
+                <div class="form-group col-lg-3t col-md-3">
+                    <label for="person">Кол-во пассажиров: </label>
+                    <input type="number" class="form-control" id="person" name="person" value="1" min="1" />
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-4">
+                    <br>
+                    @Html.CheckBox("oneway", false, htmlAttributes: new { @class = "custom-control-input" })
+                    <label for="oneway">Билет в одну сторону </label>
+                </div>
+                <div class="form-group col-lg-3 col-md-4 col-sm-4">
+                    <br>
+                    @Html.CheckBox("transfer", false)
+                    <label for="transfer">Возможность одной пересадки </label>
+                </div>
+            </div>
+            <div class="form-row submitbtn">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                    <button type="submit" class="btn btnOrder desight">Поиск</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+<script>
+    document.getElementById('oneway').onclick = function () {
+        if (document.getElementById('oneway').checked) {
+            $("#dateFrom").prop("disabled", true);
+            $("#dateFrom").prop('required', false);
+            $("#dateFrom").attr("value", "2018-01-01");
+        }
+        else {
+            $("#dateFrom").prop("disabled", false);
+            $("#dateFrom").prop('required', true);
+        }
+    }
+</script>
+<script>
+    $('#minus').on('click', function (e) {
+        var counter = $('#person').val();
+        if (counter > 1) {
+            counter--;
+            $('#person').val(counter);
+        }
+    });
+    $('#plus').on('click', function (e) {
+        var counter = $('#person').val();
+        counter++;
+        $('#person').val(counter);
+    });
+</script>
+<div class="container-fluid" id="results"></div>
+
 
 
 

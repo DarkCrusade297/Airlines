@@ -12,20 +12,18 @@ namespace Airlines.Controllers
     public class BookController : Controller
     {
         AirlinesContext db = new AirlinesContext();
-        // GET: Book
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult r()
         {
             return View();
         }
-        public ActionResult ChooseSeats(List<int> FlightID, int Person)
+        public ActionResult ChooseSeats(List<int> FlightID, int Person = 1)
         {
+            if (FlightID == null)
+            {
+                return RedirectToAction("Index","Home");
+            }
             var flights = new List<Flight>();
-           foreach (var item in FlightID)
+            foreach (var item in FlightID)
             {
                 flights.Add(db.Flights.Find(item));
             }
@@ -38,10 +36,10 @@ namespace Airlines.Controllers
                 var seat = db.Seats.Where(c => c.SeatID == id).First();
                 seats.Add(seat.SeatName);
             }
-            var bm = new BookModel() { Person=Person, Flights = flights, Seats = seats };
+            var bm = new BookModel() { Person = Person, Flights = flights, Seats = seats };
             return View(bm);
         }
-        public ActionResult Confirmation(List<Customer> customers, BookModel bm)
+        public ActionResult Confirmation(List<Customer> customers, List<int> flights)
         {
             foreach (var item in customers)
             {
@@ -55,76 +53,5 @@ namespace Airlines.Controllers
         }
 
 
-        // GET: Book/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Book/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Book/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Book/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Book/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Book/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Book/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

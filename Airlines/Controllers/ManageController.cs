@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Airlines.Models;
 using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace Airlines.Controllers
 {
@@ -32,8 +33,21 @@ namespace Airlines.Controllers
         {
             var userId = User.Identity.GetUserId();
             var orders = db.Orders.Where(c => c.UserId == userId).Include(c => c.Tickets).ToList();
+            foreach (var i in orders)
+            {
+                foreach (var item in i.Tickets)
+                {
+                    item.Flight = db.Flights.Where(c => c.ID == item.FlightID).Include(p => p.DeparturePlace).Include(p => p.ArrivalPlace).First();
+                }
+            }
             ViewBag.Orders = orders;
             return View();
+        }
+        public ActionResult Tickets (int OrderID)
+        {
+            var order = db.Orders.Where(x => x.ID == OrderID).Include(c => c.Tickets).First();
+            
+            return View(order);
         }
 
         public ApplicationSignInManager SignInManager
