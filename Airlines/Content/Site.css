@@ -80,7 +80,7 @@ footer {
 
 .empty {
     height: 20px;
-    background-color: white
+    background-color: transparent;
 }
 .submitbtn {
     text-align:center;
@@ -92,19 +92,19 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #222;
+    background-color: #414A4C;
 }
 
 .mainZone {
     height: 180px;
-    background-color: #222;
-    border-right: 2px solid azure;
+    background-color: #414A4C;
+    border-right: 2px solid #2F353B;
 }
 
 .flight {
     width: 800px;
     margin-top: 20px;
-    background-color: #222;
+    background-color: #414A4C;
     border-radius: 5px;
 }
 
