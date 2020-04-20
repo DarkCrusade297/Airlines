@@ -81,12 +81,7 @@ namespace Airlines.Controllers
                 {
                     transferFlights.Add(new TransferFlight(item, f));
                 }
-            }
-            //foreach (var item in transferFlights)
-            //{
-            //    item.FirstFlight.DeparturePlace = db.Cities.Find(item.FirstFlight.DeparturePlaceID);
-            //    item.FirstFlight.ArrivalPlace = db.Cities.Find(item.FirstFlight.ArrivalPlaceID);
-            //}
+            }}
             return transferFlights;
         }
         public ActionResult Search ()

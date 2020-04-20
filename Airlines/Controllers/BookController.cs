@@ -20,7 +20,7 @@ namespace Airlines.Controllers
         {
             if (FlightID == null)
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Search","Search");
             }
             var flights = new List<Flight>();
             foreach (var item in FlightID)
@@ -39,8 +39,9 @@ namespace Airlines.Controllers
             var bm = new BookModel() { Person = Person, Flights = flights, Seats = seats };
             return View(bm);
         }
-        public ActionResult Confirmation(List<Customer> customers, List<int> flights, string [] countires)
+        public ActionResult Confirmation(List<Customer> customers, List<int> flights, List<string> seats)
         {
+
             foreach (var item in customers)
             {
                 db.Customers.Add(item);
