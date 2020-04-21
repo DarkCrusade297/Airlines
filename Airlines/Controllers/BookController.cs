@@ -41,14 +41,35 @@ namespace Airlines.Controllers
         }
         public ActionResult Confirmation(List<Customer> customers, List<int> flights, List<string> seats)
         {
-
+            Order order = new Order();
+            order.UserId = User.Identity.GetUserId();
+            order.OrderTime = DateTime.Now;
+            db.Orders.Add(order);
+            db.SaveChanges();
             foreach (var item in customers)
             {
                 db.Customers.Add(item);
+                db.SaveChanges();
             }
-            Order order = new Order();
-            order.UserId = User.Identity.GetUserId();
-            db.Orders.Add(order);
+            var plane = db.Flights.Find(flights.First()).PlaneID;
+            var s = db.Seats.Where(c => c.PlaneID == plane);
+            var seatsID = new List<int>();
+            foreach (var item in seats)
+            {
+                seatsID.Add(db.Seats.Where(c => c.PlaneID == plane && c.SeatName == item).First().SeatID);
+            }
+            for (int i = 0; i<flights.Count;i++)
+            {
+                for (int j = 0; j< customers.Count;j++)
+                {
+                    if (i==0)
+                    {
+                        db.Tickets.Add(new Ticket(customers[j].CustomerID, flights.ElementAt(i), seatsID.ElementAt(j), order.ID));
+                    }
+                    else
+                    db.Tickets.Add(new Ticket(customers[j].CustomerID, flights.ElementAt(i), order.ID));
+                }
+            }
             db.SaveChanges();
             return View();
         }

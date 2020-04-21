@@ -81,7 +81,7 @@ namespace Airlines.Controllers
                 {
                     transferFlights.Add(new TransferFlight(item, f));
                 }
-            }}
+            }
             return transferFlights;
         }
         public ActionResult Search ()

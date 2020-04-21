@@ -16,5 +16,23 @@ namespace Airlines.Models
         public Seat Seat{ get; set; }
         public int? OrderID { get; set; }
         public Order Order { get; set; }
+        public Ticket()
+        {
+
+        }
+        public Ticket(int CusID, int FlID, int? SeatID, int OrderID)
+        {
+            CustomerID = CusID;
+            FlightID = FlID;
+            this.SeatID = SeatID;
+            this.OrderID = OrderID;
     }
+        public Ticket(int CusID, int FlID, int OrderID)
+        {
+            CustomerID = CusID;
+            FlightID = FlID;
+            this.OrderID = OrderID;
+        }
+    }
+
 }
