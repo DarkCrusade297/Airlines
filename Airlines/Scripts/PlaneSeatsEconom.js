@@ -137,8 +137,7 @@ $('.Bseat').on('click', function (e) {
         }
     }
 });
-
-for (i = 0; i <= $('#ListSeats').length; i++) {
+for (i = 0; i < $('#ListSeats').children().length; i++) {
     var valu = document.getElementById("ListSeats").options[i].text;
     document.getElementById(valu).classList.add("no");
 }
