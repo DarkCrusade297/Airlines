@@ -57,11 +57,6 @@
     </div>
 </div>
 <script>
-    function test() {
-
-    }
-</script>
-<script>
     document.getElementById('oneway').onclick = function () {
         if (document.getElementById('oneway').checked) {
             $("#dateFrom").prop("disabled", true);
@@ -73,20 +68,6 @@
             $("#dateFrom").prop('required', true);
         }
     }
-</script>
-<script>
-    $('#minus').on('click', function (e) {
-        var counter = $('#person').val();
-        if (counter > 1) {
-            counter--;
-            $('#person').val(counter);
-        }
-    });
-    $('#plus').on('click', function (e) {
-        var counter = $('#person').val();
-        counter++;
-        $('#person').val(counter);
-    });
 </script>
 <div class="container-fluid" id="results"></div>
 

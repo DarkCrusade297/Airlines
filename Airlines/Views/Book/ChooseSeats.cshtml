@@ -54,8 +54,7 @@
     @Html.Hidden("person", Model.Person);
     for (int i = 0; i < Model.Person; i++)
     {
-        @Html.Hidden("seats[" + i + "]", "", htmlAttributes: new { @class = "tee" });
-        //Переименовать класс в ListBox
+        @Html.Hidden("seats[" + i + "]", "");
     }
 
     <div>
@@ -76,10 +75,6 @@
         </div>
     </div>
 
-
-    @*<div>
-        <button type="submit" id="btn" class="btn btnOrder desight">Подтвердить</button>
-    </div>*@
 }
 <input id="p" type="hidden" value="@Model.Person" />
 <input id="c" type="hidden" value="0" />
