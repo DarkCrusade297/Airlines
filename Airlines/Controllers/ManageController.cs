@@ -45,9 +45,15 @@ namespace Airlines.Controllers
         }
         public ActionResult Tickets (int OrderID)
         {
-            var order = db.Orders.Where(x => x.ID == OrderID).Include(c => c.Tickets).First();
-            
-            return View(order);
+            var tickets = db.Tickets.Where(c => c.OrderID == OrderID).Include(c => c.Seat).Include(c => c.Customer).Include(c => c.Flight).ToList();
+            foreach (var item in tickets)
+            {
+                item.Flight.ArrivalPlace = db.Cities.Where(c => c.ID == item.Flight.ArrivalPlaceID).FirstOrDefault();
+                item.Flight.DeparturePlace = db.Cities.Where(c => c.ID == item.Flight.DeparturePlaceID).FirstOrDefault();
+
+            }
+            var list = new ListOfTickets() { Tickets = tickets };
+            return View(list);
         }
 
         public ApplicationSignInManager SignInManager

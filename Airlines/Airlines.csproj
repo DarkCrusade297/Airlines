@@ -177,10 +177,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004220215242_m.cs" />
+    <Compile Include="Migrations\202004220215242_m.Designer.cs">
+      <DependentUpon>202004220215242_m.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AirlinesContext.cs" />
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\City.cs" />
+    <Compile Include="Models\ListOfTickets.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Plane.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -355,7 +361,6 @@
     <Content Include="Views\Search\NotFound.cshtml" />
     <Content Include="Views\Search\TransferFlight.cshtml" />
     <Content Include="Views\Search\SingleFlight.cshtml" />
-    <Content Include="Views\Manage\Ticket.cshtml" />
     <Content Include="Views\Book\CustomerForm.cshtml" />
     <Content Include="Views\Book\CustomersInfo.cshtml" />
     <Content Include="Views\Book\Confirmation.cshtml" />
@@ -386,6 +391,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004220215242_m.resx">
+      <DependentUpon>202004220215242_m.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

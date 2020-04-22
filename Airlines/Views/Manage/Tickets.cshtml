@@ -1,11 +1,49 @@
-﻿@model Airlines.Models.Order
+﻿@model Airlines.Models.ListOfTickets
 @{
-    ViewBag.Title = "Tickets";
+    ViewBag.Title = "Купленные билеты";
 }
 
-<h2>Tickets</h2>
+<h2>Купленные билеты</h2>
 @foreach (var item in Model.Tickets)
 {
-    Html.RenderPartial("Ticket");
+<div class="container " >
+    <table class="table" style="border: 2px solid darkorange; border-radius:5px; margin-left:-1%;">
+        <tbody>
+            <tr>
+                <th scope="row">ФИО</th>
+                <td class="col">@item.Customer.Surname @item.Customer.Name @item.Customer.Patronymic</td>
+            </tr>
+            <tr>
+                <th scope="row">ОТКУДА</th>
+                <td class="col">@item.Flight.ArrivalPlace.Name</td>
+            </tr>
+            <tr>
+                <th scope="row">КУДА</th>
+                <td class="col">@item.Flight.DeparturePlace.Name</td>
+            </tr>
+            <tr>
+                <th scope="row">ДАТА И ВРЕМЯ ОТЛЕТА</th>
+                <td class="col">@item.Flight.Arrival</td>
+            </tr>
+            <tr>
+                <th scope="row">ДАТА И ВРЕМЯ ПРИЛЕТА</th>
+                <td class="col">@item.Flight.Departure</td>
+            </tr>
+            <tr>
+                <th scope="row">АВИАКОМПАНИЯ</th>
+                <td class="col">@item.Flight.Airline</td>
+            </tr>
+            @if (item.Seat != null)
+            {
+                <tr>
+                    <th scope="row">МЕСТО</th>
+                    <td class="col">@item.Seat.SeatName</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+ <br />
 }
 

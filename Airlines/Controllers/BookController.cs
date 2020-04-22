@@ -39,8 +39,37 @@ namespace Airlines.Controllers
             var bm = new BookModel() { Person = Person, Flights = flights, Seats = seats };
             return View(bm);
         }
-        public ActionResult Confirmation(List<Customer> customers, List<int> flights, List<string> seats)
+        public ActionResult Confirmation(List<Customer> customers, List<int> flights, List<string> seats, int person)
         {
+            var tickets = db.Tickets.Where(c => c.FlightID == flights.FirstOrDefault()).ToList();
+            var seatsNames = new List<string>();
+            foreach (var item in tickets)
+            {
+                var id = item.SeatID;
+                var seat = db.Seats.Where(c => c.SeatID == id).First();
+                seatsNames.Add(seat.SeatName);
+            }
+            bool check=false;
+            foreach (var item in seats)
+            {
+                foreach (var i in seatsNames)
+                {
+                    if (item == i)
+                    {
+                        check = true;
+                    }
+                }
+            }
+            if (check)
+            {
+                var fl = new List<Flight>();
+                foreach (var item in flights)
+                {
+                    fl.Add(db.Flights.Find(item));
+                }
+                var bm = new BookModel() { Person = person, Flights = fl, Seats = seatsNames };
+                return View("ChooseSeats", bm);
+            }
             Order order = new Order();
             order.UserId = User.Identity.GetUserId();
             order.OrderTime = DateTime.Now;
